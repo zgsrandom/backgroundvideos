@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Pestaña Animada</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="https://raw.githubusercontent.com/tuusuario/tu-repo/main/fondo1.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        // Array con las URLs de los videos que has subido a GitHub
+        const videos = [
+            "https://raw.githubusercontent.com/zgsrandom/backgroundvideos/main/mylivewallpapers.com-Abstract-Clouds.mp4",
+            "https://raw.githubusercontent.com/zgsrandom/backgroundvideos/main/mylivewallpapers.com-Shiny-Abstract.mp4        ];
+
+        // Inicializar el índice
+        let videoIndex = 0;
+
+        // Función para cambiar el video
+        function changeVideo() {
+            const videoElement = document.getElementById('background-video');
+            videoIndex = (videoIndex + 1) % videos.length; // Cambiar al siguiente video en el array
+            videoElement.src = videos[videoIndex]; // Cambiar el src del video
+            videoElement.load(); // Recargar el video
+            videoElement.play(); // Reproducir el nuevo video
+        }
+
+        // Cambiar video cada 60 segundos (60000 milisegundos)
+        setInterval(changeVideo, 60000);
+    </script>
+</body>
+</html>
